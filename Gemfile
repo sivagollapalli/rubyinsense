@@ -38,4 +38,3 @@ gem 'jquery-rails'
 
 gem "mongoid", "~> 3.1.2"
 gem 'mongoid_slug'
-gem 'rails_admin'
