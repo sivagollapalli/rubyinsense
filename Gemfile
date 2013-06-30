@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-twitter'
 
 # Bundle edge Rails instead:
@@ -20,6 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'haml-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -38,4 +40,4 @@ gem 'jquery-rails'
 
 gem "mongoid", "~> 3.1.2"
 gem 'mongoid_slug'
-gem 'rails_admin'
+gem 'bootstrap'
