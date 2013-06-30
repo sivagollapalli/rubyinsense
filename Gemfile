@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'simple_form'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -40,4 +41,6 @@ gem 'haml-rails'
 
 gem "mongoid", "~> 3.1.2"
 gem 'mongoid_slug'
-gem 'bootstrap'
+gem 'twitter-bootstrap-rails'
+gem "therubyracer"
+gem "less-rails"
