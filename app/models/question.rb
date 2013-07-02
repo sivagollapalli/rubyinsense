@@ -5,7 +5,7 @@ class Question
   belongs_to :user
 
   field :statement, type: String
-  field :level,     type:Integer
 
   validates :statement, :presence => true
+
 end

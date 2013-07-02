@@ -1,0 +1,12 @@
+%h2 All Questions
+
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Question Statement
+  %tbody
+    - @questions.each do |quest|
+      %tr
+        %td
+          = link_to quest.statement, question_path(quest)

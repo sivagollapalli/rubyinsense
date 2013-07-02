@@ -6,7 +6,7 @@
         %b.caret
       %ul.dropdown-menu
         %li
-          %a{:href => "#"} Action
+          %a{:href => questions_path} Questions
         %li.divider
         %li
           = link_to 'Log Out', destroy_user_session_path, method: :delete
@@ -32,5 +32,5 @@
           = yield :signed_in_options
         - else
           = yield :signed_out_options
-        .container
-          = yield
+    .container
+      = yield
