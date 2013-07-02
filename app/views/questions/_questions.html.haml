@@ -1,0 +1,9 @@
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Question Statement
+  %tbody
+    - @questions.each do |quest|
+      %tr
+        %td
+          = link_to quest.statement, path_to_view(quest)

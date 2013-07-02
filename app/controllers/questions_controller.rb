@@ -26,4 +26,8 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  def my_questions
+    @questions = current_user.questions
+  end
+
 end

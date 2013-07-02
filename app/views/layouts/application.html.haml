@@ -7,6 +7,8 @@
       %ul.dropdown-menu
         %li
           %a{:href => questions_path} Questions
+        %li
+          %a{:href => my_questions_questions_path} My Questions
         %li.divider
         %li
           = link_to 'Log Out', destroy_user_session_path, method: :delete
