@@ -29,5 +29,9 @@ class QuestionsController < ApplicationController
   def my_questions
     @questions = current_user.questions
   end
+    
+  def show
+    @question = Question.find(params[:id])
+  end
 
 end

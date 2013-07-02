@@ -6,6 +6,7 @@ Rubyinsense::Application.routes.draw do
     collection do
       get 'my_questions'
     end
+    resources :answers
   end
   root :to => 'home#index'
 end
