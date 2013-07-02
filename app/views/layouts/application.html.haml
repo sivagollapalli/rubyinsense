@@ -1,0 +1,36 @@
+- content_for :signed_in_options do
+  %ul.nav.pull-right
+    %li
+      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        Options
+        %b.caret
+      %ul.dropdown-menu
+        %li
+          %a{:href => "#"} Action
+        %li.divider
+        %li
+          = link_to 'Log Out', destroy_user_session_path, method: :delete
+
+- content_for :signed_out_options do
+  %ul.nav.pull-right
+    %li 
+      = link_to 'Sign In with Twitter', '/auth/twitter?x_auth_access_type=read'
+      
+
+%html
+  %head
+    %title Rubyinsense
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-inverse
+      .navbar-inner
+        = link_to '#', class: :brand do
+          Rubyinsense
+        - if user_signed_in?
+          = yield :signed_in_options
+        - else
+          = yield :signed_out_options
+        .container
+          = yield
