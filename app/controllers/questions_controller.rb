@@ -12,6 +12,16 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
   end
 
+  def edit
+    @question = Question.find params[:id]
+  end
+  
+  def update
+    @question = Question.find params[:id]
+    @question.update_attributes(params[:question])
+    redirect_to questions_path
+  end
+
   def index
     @questions = Question.all
   end

@@ -1,0 +1,4 @@
+%h2 Edit question
+
+= simple_form_for @question, :url => question_path, :type => 'post' do |f|
+  = render :partial => 'form', :locals => { :f => f }
