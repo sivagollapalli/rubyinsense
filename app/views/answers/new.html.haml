@@ -1,0 +1,4 @@
+%h2 Add a answer
+
+= simple_form_for [@question, @answer] do |f|
+  = render :partial => 'form', :locals => { :f => f }

@@ -1,0 +1,15 @@
+.row
+  .span10
+    %h4= "Question: #{@question.statement}"
+  .span2.pull-right
+    %h5= link_to 'Add Answer', new_question_answer_path(@question)
+%legend Answers
+- @question.answers.each do |ans|
+  %ul
+    %li
+      .row
+        .span11
+          = ans.statement
+        .span1.pull-right
+          = link_to 'Edit', edit_question_answer_path(@question, ans)
+

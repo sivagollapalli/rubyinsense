@@ -6,4 +6,6 @@ class Answer
   
   field :statement, type: String
 
+  validate :statement, presence: true
+
 end
