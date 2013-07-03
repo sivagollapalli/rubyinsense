@@ -3,7 +3,8 @@
     %tr
       %th Question Statement
   %tbody
-    - @questions.each do |quest|
+    - @questions.each_with_index do |quest, index|
       %tr
         %td
+          = index + 1
           = link_to quest.statement, path_to_view(quest)
