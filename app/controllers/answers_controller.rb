@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :load_question
 
   def new
