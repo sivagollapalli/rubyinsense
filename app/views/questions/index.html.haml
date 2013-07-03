@@ -1,3 +1,8 @@
-%h2 All Questions
+.row
+  .pull-right
+    = link_to 'Add Question', new_question_path, class: 'btn btn-info'
+  %br
+  %br
+  .span12
+    = render :partial => "questions"
 
-= render :partial => "questions"
