@@ -1,11 +1,12 @@
 class Question
   include Mongoid::Document
   include Mongoid::Timestamps
-  
-  has_many :answers
-  belongs_to :user
 
   field :statement, type: String
+
+  belongs_to :user
+  has_many :answers
+  has_many :comments
 
   validates :statement, :presence => true
 

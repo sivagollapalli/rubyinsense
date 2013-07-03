@@ -1,0 +1,21 @@
+- comments = @question.comments.select{|c| !c.new_record?} 
+- if comments.any?
+  %legend Comments
+  - comments.each do |r|
+    .well
+      .container-fluid
+        .row
+          .span6
+            %i.icon-calendar
+            = r.created_at.strftime("%d/%m/%Y")
+            By 
+            %b
+              = r.user.email
+          .pull-right
+            - if r.user == current_user
+              = link_to 'Remove', question_comment_path(@question, r), method: :delete, class: 'btn btn-danger'
+      .container-fluid
+        .row
+          .span6
+            %b Description:
+            = r.description

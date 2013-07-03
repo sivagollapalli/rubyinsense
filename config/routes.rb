@@ -7,6 +7,7 @@ Rubyinsense::Application.routes.draw do
       get 'my_questions'
     end
     resources :answers
+    resources :comments, only: [:create, :destroy]
   end
   root :to => 'questions#index'
 end
