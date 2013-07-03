@@ -1,6 +1,8 @@
 .row
   .span10
-    %h4= "Question: #{@question.statement}"
+    %pre.prettyprint
+      %h4= "Question: #{@question.statement}"
+      %p By:- #{@question.user.email}
   .span2.pull-right
     %h5= link_to 'Add Answer', new_question_answer_path(@question)
 %legend Answers
@@ -9,7 +11,8 @@
     %li
       .row
         .span11
-          = ans.statement
+          = text_area_tag 'answer', ans.statement, :disabled => 'disabled', :rows => 10, :class => "answer"
+          Answer by :- #{ans.user.email} 
         .span1.pull-right
-          = link_to 'Edit', edit_question_answer_path(@question, ans)
+          = link_to 'Edit', edit_question_answer_path(@question, ans) if current_user == ans.user
 

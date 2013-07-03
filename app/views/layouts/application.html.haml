@@ -6,7 +6,7 @@
         %b.caret
       %ul.dropdown-menu
         %li
-          %a{:href => questions_path} Questions
+          %a{:href => root_path} Questions
         %li
           %a{:href => my_questions_questions_path} My Questions
         %li.divider
@@ -21,15 +21,15 @@
 
 %html
   %head
-    %title Rubyinsense
+    %title RubyInSense
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
     .navbar.navbar-inverse
       .navbar-inner
-        = link_to '#', class: :brand do
-          Rubyinsense
+        = link_to root_path, class: :brand do
+          RubyInSense
         - if user_signed_in?
           = yield :signed_in_options
         - else

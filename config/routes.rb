@@ -8,5 +8,5 @@ Rubyinsense::Application.routes.draw do
     end
     resources :answers
   end
-  root :to => 'home#index'
+  root :to => 'questions#index'
 end
