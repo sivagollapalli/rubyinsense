@@ -9,6 +9,8 @@
           %a{:href => root_path} Questions
         %li
           %a{:href => my_questions_questions_path} My Questions
+        %li
+          %a{:href => new_question_path} Add a Question
         %li.divider
         %li
           = link_to 'Log Out', destroy_user_session_path, method: :delete
