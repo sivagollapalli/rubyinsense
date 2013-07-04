@@ -1,4 +1,7 @@
-%h2 Add a answer
-
-= simple_form_for [@question, @answer] do |f|
-  = render :partial => 'form', :locals => { :f => f }
+.row
+  .span4
+  .span4
+    %h2 Add a answer
+    = simple_form_for [@question, @answer] do |f|
+      = render :partial => 'form', :locals => { :f => f }
+  .span4
