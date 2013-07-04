@@ -78,3 +78,14 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+production:
+  sessions:
+    default:
+      hosts:
+        - dharma.mongohq.com:10029
+      database: app16705010
+      username: heroku
+      password: cb2d5dce7baf52720ee7004b5640b597
+      options:
+        consistency: :strong
+        safe: true
