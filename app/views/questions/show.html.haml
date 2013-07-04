@@ -12,6 +12,7 @@
     %span.label.label-success Answer by :- 
     = ans.user.email 
     .pull-right
+      = link_to 'Remove', question_answer_path(@question, ans), method: :delete, class: 'btn btn-danger' if current_user == ans.user
       = link_to 'Edit', edit_question_answer_path(@question, ans), class: 'btn btn-primary' if current_user == ans.user
   %pre.prettyprint
     = ans.statement

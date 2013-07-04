@@ -11,6 +11,8 @@ class User
   has_many :answers
   has_many :comments
 
+  validates :uid, :email, presence: true
+
   def password_required?
     false
   end

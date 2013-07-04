@@ -30,6 +30,15 @@ class AnswersController < ApplicationController
       render action: :edit
     end
   end
+  
+  def destroy
+    @question = Question.find(params[:question_id])
+    answer = Answer.find(params[:id])
+    not_authorized unless answer.user == current_user
+    answer.destroy
+    flash[:notice] = 'Answer removed Successfully'
+    redirect_to question_path(@question)
+  end
 
   private
 

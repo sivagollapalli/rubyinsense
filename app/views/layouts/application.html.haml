@@ -30,11 +30,11 @@
   %body
     .navbar.navbar-inverse
       .navbar-inner
-        = link_to root_path, class: :brand do
-          RubyInSense
         - if user_signed_in?
           = yield :signed_in_options
         - else
           = yield :signed_out_options
+        .pull-left
+          = link_to 'RubyInSense', root_path, class: :brand 
     .container
       = yield
