@@ -1,6 +1,5 @@
 - comments = @question.comments.select{|c| !c.new_record?} 
 - if comments.any?
-  %legend Comments
   - comments.each do |r|
     .well
       .container-fluid
