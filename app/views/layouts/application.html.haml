@@ -2,7 +2,7 @@
   %ul.nav.pull-right
     %li
       %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-        Options
+        = user_signed_in? ? 'Options' : current_user.email
         %b.caret
       %ul.dropdown-menu
         %li
