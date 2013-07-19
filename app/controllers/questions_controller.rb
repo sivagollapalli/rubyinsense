@@ -46,4 +46,9 @@ class QuestionsController < ApplicationController
     question.destroy
     redirect_to questions_path
   end
+
+  def vote
+    @answer = Answer.find(params[:id])
+    current_user.vote(@answer, params[:type].to_sym)
+  end
 end

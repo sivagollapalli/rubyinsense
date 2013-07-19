@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongo::Voter
   
   devise :database_authenticatable, :registerable, :validatable
   field :email,               :type => String, :default => ''
@@ -12,7 +13,6 @@ class User
   has_many :comments
 
   validates :uid, :email, presence: true
-
   def password_required?
     false
   end

@@ -6,6 +6,7 @@ Rubyinsense::Application.routes.draw do
   resources :questions do
     collection do
       get 'my_questions'
+      get 'vote'
     end
     resources :answers
     resources :comments, only: [:create, :destroy]

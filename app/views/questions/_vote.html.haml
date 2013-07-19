@@ -1,0 +1,8 @@
+= link_to vote_questions_path(id: answer.id, type: :up), remote: true do
+  %i 
+    = answer.up_votes_count
+    .icon-thumbs-up
+= link_to vote_questions_path(id: answer.id, type: :down), remote: true do
+  %i 
+    = answer.down_votes_count
+    .icon-thumbs-down
