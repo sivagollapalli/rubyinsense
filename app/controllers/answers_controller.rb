@@ -10,6 +10,8 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build(params['answer'])
     @answer.user = current_user
     if @answer.save
+      twitter_handle = Twitter.user(current_user.uid)[:screen_name]
+      Twitter.update('@'+ twitter_handle + ' added an answer to #rubyinsense..!!')
       redirect_to question_path(@question)
     else
       render action: :new
