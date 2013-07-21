@@ -1,5 +1,6 @@
 %section
-  %span.label.label-success By :- 
+  %span.label.label-success By :-
+  = render 'image'
   = @question.user.email
   .span2.pull-right
     %h5= link_to 'Add Answer', new_question_answer_path(@question), class: 'btn btn-primary'
@@ -10,8 +11,13 @@
 - @question.answers.each do |ans|
   .bs-docs-example
     %span.label.label-success Answer by :- 
+    = render 'image'
     = ans.user.email 
     .pull-right
+      %span
+        = link_to "javascript:HideOrShow('#{ans.id}');", title: 'Show', id: "a_#{ans.id}" do
+          %h4.icon-plus
+      &nbsp
       - if current_user == ans.user
         %span
           = link_to edit_question_answer_path(@question, ans), title: 'Edit' do
@@ -20,12 +26,13 @@
         %span
           = link_to question_answer_path(@question, ans), method: :delete, title: 'Remove' do
             %h4.icon-trash 
+        &nbsp
       - else
         %div{id: ans.id}
           = render 'vote', answer: ans
-  %pre.prettyprint
+  %pre.prettyprint{id: "q_#{ans.id}", style: "display: none"}
     = ans.statement
-
+- @bool = 1
 %legend Comments
 = render 'comment'
 = simple_form_for [@question, @comment] do |f|

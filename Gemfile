@@ -42,6 +42,7 @@ gem 'haml-rails'
 
 gem "mongoid", "~> 3.1.2"
 gem 'mongoid_slug'
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem "less-rails"
