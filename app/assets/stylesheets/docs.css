@@ -2,8 +2,7 @@
 body {
     padding-top: 40px;
     position: relative;
-    background: -webkit-linear-gradient(top, #000222 0%,#4B637C 100%);
-    /**background-image: url("totb.jpg");**/
+    background: -webkit-linear-gradient(top, #8A4B08 0%,#F3F781 100%);
 }
 h3 code {
     font-size: 14px;

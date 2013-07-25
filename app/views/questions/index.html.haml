@@ -1,7 +1,19 @@
+- content_for :box do
+  %br
+  %br
+  .row
+    .span3
+    .span6
+      = image_tag 'box.jpg', size: '600x400'
+    .span3
 .row
+  %br
+  %br
   .pull-right
     = link_to 'Add Question', new_question_path, class: 'btn btn-info'
   %br
   %br
-  .span12
-    = render :partial => "questions"
+  - @questions.each do |ques|
+    .span4
+      .well
+        = link_to truncate(ques.statement, length: 180), path_to_view(ques)
