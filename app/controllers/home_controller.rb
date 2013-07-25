@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    redirect_to questions_path if current_user
+    #redirect_to questions_path if current_user
   end
 
   def create

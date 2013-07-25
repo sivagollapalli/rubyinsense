@@ -25,12 +25,11 @@
 
 %html
   %head
-    %title RubyInSense
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body.well
-    .navbar.navbar-inverse
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         - if user_signed_in?
           = yield :signed_in_options
@@ -38,5 +37,7 @@
           = yield :signed_out_options
         .pull-left
           = link_to 'RubyInSense', root_path, class: :brand 
+    %br
+    %br
     .container
       = yield
