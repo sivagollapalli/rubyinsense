@@ -44,3 +44,4 @@ gem 'mongoid_slug'
 gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem "less-rails"
+gem "rails-backbone"
