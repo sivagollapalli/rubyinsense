@@ -1,5 +1,5 @@
 %section
-  = render 'image'
+  = render :partial => 'image', :locals => {:user => @question.user}
   = @question.user.twitter_handle
   .span2.pull-right
     %h5= link_to 'Add Answer', new_question_answer_path(@question), class: 'btn btn-primary'
@@ -10,7 +10,7 @@
 .btn{id: "hide_or_show"} Show answers
 - @question.answers.each do |ans|
   .bs-docs-example
-    = render 'image'
+    = render :partial => 'image', :locals => {:user => ans.user}
     = ans.user.twitter_handle 
     .pull-right
       - if user_signed_in?

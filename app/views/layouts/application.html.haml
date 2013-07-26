@@ -2,10 +2,10 @@
   .nav.pull-right
   %ul.nav.pull-right
     %li
-      = render "questions/image"
+      = render :partial => "questions/image", :locals => {:user => current_user}
     %li
       %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-        = current_user.try(:email) || 'Options' 
+        = current_user.try(:twitter_handle) || 'Options' 
         %b.caret
       %ul.dropdown-menu
         %li

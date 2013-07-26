@@ -11,7 +11,7 @@
         .row
           .span6
             By 
-            = render "image"
+            = render :partial => "image", :locals => {:user => r.user}
             %b
               = r.user.twitter_handle
             %br

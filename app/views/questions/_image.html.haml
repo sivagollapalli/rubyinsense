@@ -1,5 +1,5 @@
-- if current_user
-  - if current_user.image_url != ''
-    = image_tag current_user.image_url, class: "img-rounded"
+- if user
+  - if user.image_url != ''
+    = image_tag user.image_url, class: "img-rounded"
   - else
     = image_tag "anonymous.jpg", class: "img-rounded"
