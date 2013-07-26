@@ -10,8 +10,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build(params['answer'])
     @answer.user = current_user
     if @answer.save
-      twitter_handle = Twitter.user(current_user.uid)[:screen_name]
-      Twitter.update('@'+ twitter_handle + ' added an answer to #rubyinsense..!!')
+      Twitter.update('@'+ current_user.twitter_handle + " added an answer to #rubyinsense..!! Here it is http://rubyinsense.heroku.com/questions/#{@question.id}") unless Rails.env.development?
       redirect_to question_path(@question)
     else
       render action: :new

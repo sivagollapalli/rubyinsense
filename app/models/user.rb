@@ -1,7 +1,6 @@
 class User
   include Mongoid::Document
   include Mongo::Voter
-  include Mongoid::Paperclip
   
   devise :database_authenticatable, :registerable, :validatable
   field :email,               :type => String, :default => ''
@@ -11,22 +10,29 @@ class User
   field :fname,               :type => String
   field :lname,               :type => String
   field :twitter_handle,      :type => String
-
-  has_mongoid_attached_file :image,
-    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-    :url => "/system/:attachment/:id/:style/:filename",
-    :styles => {
-      :small => ['100x100', :jpg]
-    }
-
+  field :image_url,           :type => String, :default => ''
 
   has_many :questions
   has_many :answers
   has_many :comments
 
   validates :uid, :email, presence: true
+  
+  after_create :set_twitter_handle
+  after_create :add_image_url
+
   def password_required?
     false
+  end
+
+  def set_twitter_handle
+    handle = Twitter.user(self.uid)[:screen_name] 
+    self.set(:twitter_handle, handle)
+  end
+
+  def add_image_url
+    image  = Twitter.user(self.uid)[:profile_image_url] 
+    self.set(:image_url, image)
   end
 end
 
