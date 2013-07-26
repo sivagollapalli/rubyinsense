@@ -2,6 +2,7 @@
 body {
     padding-top: 40px;
     position: relative;
+    background: -webkit-linear-gradient(top, #8A4B08 0%,#F3F781 100%);
 }
 h3 code {
     font-size: 14px;
@@ -785,4 +786,3 @@ table code {
     padding-bottom: 20px;
     padding-top: 20px;
 }
-

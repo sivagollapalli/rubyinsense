@@ -12,17 +12,18 @@
     %span.label.label-success Answer by :- 
     = ans.user.email 
     .pull-right
-      - if current_user == ans.user
-        %span
-          = link_to edit_question_answer_path(@question, ans), title: 'Edit' do
-            %h4.icon-edit
-        &nbsp
-        %span
-          = link_to question_answer_path(@question, ans), method: :delete, title: 'Remove' do
-            %h4.icon-trash 
-      - else
-        %div{id: ans.id}
-          = render 'vote', answer: ans
+      - if user_signed_in?
+        - if current_user == ans.user
+          %span
+            = link_to edit_question_answer_path(@question, ans), title: 'Edit' do
+              %h4.icon-edit
+          &nbsp
+          %span
+            = link_to question_answer_path(@question, ans), method: :delete, title: 'Remove' do
+              %h4.icon-trash 
+        - else
+          %div{id: ans.id}
+            = render 'vote', answer: ans
   %pre.prettyprint
     = ans.statement
 
