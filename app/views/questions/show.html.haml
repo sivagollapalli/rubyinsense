@@ -1,5 +1,4 @@
 %section
-  %span.label.label-success By :-
   = render 'image'
   = @question.user.email
   .span2.pull-right
@@ -8,15 +7,15 @@
   %pre.prettyprint
     %h4= "Question: #{@question.statement}"
 %legend Answers
+.btn{id: "hide_or_show"} Show All
 - @question.answers.each do |ans|
   .bs-docs-example
-    %span.label.label-success Answer by :- 
     = render 'image'
     = ans.user.email 
     .pull-right
       %span
         = link_to "javascript:HideOrShow('#{ans.id}');", title: 'Show', id: "a_#{ans.id}" do
-          %h4.icon-plus
+          %h4.icon-chevron-up.test
       &nbsp
       - if current_user == ans.user
         %span
@@ -30,10 +29,24 @@
       - else
         %div{id: ans.id}
           = render 'vote', answer: ans
-  %pre.prettyprint{id: "q_#{ans.id}", style: "display: none"}
+  %pre.prettyprint.all{id: "q_#{ans.id}", style: "display: none"}
     = ans.statement
 - @bool = 1
 %legend Comments
 = render 'comment'
 = simple_form_for [@question, @comment] do |f|
   = render 'comments/form', f: f
+
+:javascript
+  $("#hide_or_show").click(function(){
+    $(".all").toggle()
+    $(this).text($(this).text() == "Hide All" ? "Show All" : "Hide All");
+    var text = $(".test").toggleClass("icon-chevron-up")
+    //if(text == "icon-chevron-up test"){
+    //$(".test").attr("class", "icon-chevron-down test");
+    //}
+    //else{
+    //$(".test").attr("class",  "icon-chevron-up test");
+    //}
+
+  });

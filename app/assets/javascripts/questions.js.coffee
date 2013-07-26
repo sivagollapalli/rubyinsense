@@ -5,9 +5,9 @@ $(document).ready ->
     window.HideOrShow = (ele) ->
         icon = $("#a_"+ele).contents().attr('class')
         $("#q_"+ele).toggle ->
-            if icon == "icon-minus"
-                $("#a_"+ele).contents().attr("class", 'icon-plus')
+            if icon == "icon-chevron-up"
+                $("#a_"+ele).contents().attr("class", 'icon-chevron-down')
                 $("#a_"+ele).contents().attr("title", 'Show')
             else
-               $("#a_"+ele).contents().attr("class", 'icon-minus');
+               $("#a_"+ele).contents().attr("class", 'icon-chevron-up');
                $("#a_"+ele).contents().attr("title", 'Hide');
