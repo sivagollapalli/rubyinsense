@@ -2,7 +2,7 @@ class Rubyinsense.Routers.QuestionsRouter extends Backbone.Router
 
   routes:
     '': 'index'
-    'questions/:id' : 'show'
+    'questions/new' : 'new'
   
   initialize: -> 
     @collection = new Rubyinsense.Collections.QuestionsCollection()
@@ -12,6 +12,7 @@ class Rubyinsense.Routers.QuestionsRouter extends Backbone.Router
     view = new Rubyinsense.Views.QuestionsIndex(collection: @collection) 
     $('#questions').html(view.render().el)  
 
-  show: (id) -> 
-    alert 'on show route'
-  
+  new: -> 
+    view = new Rubyinsense.Views.NewQuestion() 
+    $('#new-question').html(view.render().el)  
+    

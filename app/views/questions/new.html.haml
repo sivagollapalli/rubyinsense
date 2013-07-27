@@ -1,8 +1,0 @@
-%h2 Add a question
-= simple_form_for @question, url: questions_path do |f|
-  .row
-    .span4
-    .span4
-      .form-inputs
-        = render :partial => 'form', :locals => { :f => f }
-        = f.submit 'Add a Question', class: 'btn btn-info'

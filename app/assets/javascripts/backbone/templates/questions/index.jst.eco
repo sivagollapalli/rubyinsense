@@ -1,6 +1,6 @@
 <div class='row'>
   <div class='pull-right'>
-    <a href='#' class='btn btn-info'>Add Question</a>
+    <a href='#/questions/new' class='btn btn-info'>Add Question</a>
   </div>
   <br/>
   <br/>
@@ -8,6 +8,7 @@
 
 <% index = 0 %>
 <div class='span12'>
+  <div id='new-question'></div>
   <h3>List of Questions</h3>
     <table class='table.table-bordered.table-striped'>
       <tbody>
