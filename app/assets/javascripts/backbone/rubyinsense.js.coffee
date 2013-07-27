@@ -9,3 +9,9 @@ window.Rubyinsense =
   Collections: {}
   Routers: {}
   Views: {}
+  init: -> 
+    new Rubyinsense.Routers.QuestionsRouter()
+    Backbone.history.start()
+
+$(document).ready -> 
+  Rubyinsense.init()

@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
-   before_filter :authenticate_user!
+  respond_to :json
+
+  before_filter :authenticate_user!, except: [:index]
 
   def new
     @question = Question.new
@@ -29,7 +31,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    respond_with Question.all
   end
 
   def my_questions

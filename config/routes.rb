@@ -1,14 +1,15 @@
 Rubyinsense::Application.routes.draw do
-  match '/home' => 'home#index'
   match '/auth/:provider/callback' => 'home#create'
   devise_for :users, :controllers => {:registrations => 'registrations'}
 
-  resources :questions do
-    collection do
-      get 'my_questions'
+  scope 'api' do
+    resources :questions do
+      collection do
+        get 'my_questions'
+      end
+      resources :answers
+      resources :comments, only: [:create, :destroy]
     end
-    resources :answers
-    resources :comments, only: [:create, :destroy]
   end
-  root :to => 'questions#index'
+  root :to => 'home#index'
 end
