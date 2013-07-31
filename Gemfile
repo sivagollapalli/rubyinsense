@@ -42,7 +42,7 @@ gem 'haml-rails'
 
 gem "mongoid", "~> 3.1.2"
 gem 'mongoid_slug'
-gem 'twitter-bootstrap-rails'
+#gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter'

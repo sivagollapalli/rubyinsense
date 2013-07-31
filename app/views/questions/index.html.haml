@@ -6,14 +6,18 @@
     .span6
       = image_tag 'box.jpg', size: '600x400'
     .span3
-.row
-  %br
-  %br
+-#.row
   .pull-right
     = link_to 'Add Question', new_question_path, class: 'btn btn-info'
-  %br
-  %br
+%br
+.row
+.row
   - @questions.each do |ques|
-    .span4
-      .well
-        = link_to truncate(ques.statement, length: 180), path_to_view(ques)
+    .col-lg-4
+      .panel.panel-primary.box
+        .panel-heading
+          = render :partial => "questions/image", :locals => {:user => ques.user}
+        = truncate(ques.statement, length: 180)
+        .pull-right
+          = link_to 'Detail', path_to_view(ques), class: 'btn btn-info'
+        %br
