@@ -46,3 +46,4 @@ gem 'mongoid_slug'
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter'
+gem 'bitly'
