@@ -7,7 +7,8 @@
 body {
     padding-top: 40px;
     position: relative;
-    background: white url("pattern.gif") repeat-x;
+    background-color: #eeeff3;
+    /**background: white url("pattern.gif") repeat-x;**/
 }
 textarea {
   width:450px;
@@ -52,8 +53,19 @@ textarea.answer {
 .header{
   /*background-color: #292929;*/
   background-color: #428BCA;
-  height: 150px;
+  height: 250px;
   margin-top: -40px;
+}
+
+.logo{
+    color: #13253e;
+    text-align: center;
+    font-family: mensch;
+    font-size: 48px;
+    line-height: 1.3em;
+    word-spacing: -0.1em;
+    text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
 }
 
 
@@ -64,7 +76,11 @@ textarea.answer {
   width: 960px;
   margin: 0 auto;
   position: relative;
-  top: -78px;
+  top: -150px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
 }
 
 .box {
