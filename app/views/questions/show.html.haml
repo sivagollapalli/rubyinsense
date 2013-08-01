@@ -1,55 +1,42 @@
-%section
-  = render :partial => 'image', :locals => {:user => @question.user}
-  = @question.user.twitter_handle
+.row
   .span2.pull-right
     %h5= link_to 'Add Answer', new_question_answer_path(@question), class: 'btn btn-primary'
-%section
-  %pre.prettyprint
+
+.row
+  .bs-example
+    = render :partial => 'image', :locals => {:user => @question.user}
+    = @question.user.twitter_handle
+  .highlight
     %h4= "Question: #{@question.statement}"
-%legend Answers
-.btn{id: "hide_or_show"} Show answers
-- @question.answers.each do |ans|
-  .bs-docs-example
-    = render :partial => 'image', :locals => {:user => ans.user}
-    = ans.user.twitter_handle 
-    .pull-right
-      - if user_signed_in?
-        %span
-          = link_to "javascript:HideOrShow('#{ans.id}');", title: 'Show', id: "a_#{ans.id}" do
-            %h4.icon-chevron-up.test
-        &nbsp
-        - if current_user == ans.user
-          %span
-            = link_to edit_question_answer_path(@question, ans), title: 'Edit' do
-              %h4.icon-edit
-          &nbsp
-          %span
-            = link_to question_answer_path(@question, ans), method: :delete, title: 'Remove' do
-              %h4.icon-trash 
-          &nbsp
-        - else
-          %div{id: ans.id}
-            = render 'vote', answer: ans
-  %pre.prettyprint.all{id: "q_#{ans.id}", style: "display: none"}
-    = ans.statement
-%legend Comments
+
+
+- answers = @question.answers
+
+- if answers.present? 
+  %legend 
+    %b Answers
+  - answers.each do |ans|
+    .row
+      .bs-example
+        = render :partial => 'image', :locals => {:user => ans.user}
+        = ans.user.twitter_handle 
+        .pull-right
+          - if user_signed_in?
+            - if current_user == ans.user
+              %span
+                = link_to 'Edit', edit_question_answer_path(@question, ans), title: 'Edit', class: 'btn btn-primary' 
+              &nbsp
+              %span
+                = link_to 'Destroy', question_answer_path(@question, ans), method: :delete, title: 'Remove', class: 'btn btn-danger' 
+              &nbsp
+            - else
+              %div
+                = render 'vote', answer: ans
+      .highlight
+        %pre.prettyprint
+        = ans.statement
+%legend 
+  %b Comments
 = render 'comment'
 = simple_form_for [@question, @comment] do |f|
   = render 'comments/form', f: f
-
-:javascript
-  $("#hide_or_show").click(function(){
-    $(this).text($(this).text() == "Hide answers" ? "Show answers" : "Hide answers");
-    $(".all").each(function(){
-      if($(this).attr("style") == "display: none"){
-        $(this).attr("style", "display: block");
-      }
-      else{
-        $(this).attr("style", "display: none");
-      }
-    });
-    var text = $(".test").attr("class")
-    if(text == "icon-chevron-up test"){
-      $(".test").attr("class","icon-chevron-down test");
-    }
-  });
