@@ -30,7 +30,7 @@
                 = link_to 'Destroy', question_answer_path(@question, ans), method: :delete, title: 'Remove', class: 'btn btn-danger' 
               &nbsp
             - else
-              %div
+              %div{id: ans.id}
                 = render 'vote', answer: ans
       %pre.highlight.prettyprint
         = ans.statement
