@@ -6,7 +6,7 @@
   .bs-example
     = render :partial => 'image', :locals => {:user => @question.user}
     = @question.user.twitter_handle
-  .highlight
+  %pre.highlight.prettyprint
     %h4= "Question: #{@question.statement}"
 
 
@@ -32,8 +32,7 @@
             - else
               %div
                 = render 'vote', answer: ans
-      .highlight
-        %pre.prettyprint
+      %pre.highlight.prettyprint
         = ans.statement
 %legend 
   %b Comments
