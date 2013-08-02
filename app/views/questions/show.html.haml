@@ -8,7 +8,7 @@
     = @question.user.twitter_handle
   %pre.highlight.prettyprint
     %h4
-      = raw code_highlight(@question.statement)
+      =@question.statement
 
 
 - answers = @question.answers
