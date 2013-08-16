@@ -39,5 +39,6 @@
 %legend 
   %b Comments
 = render 'comment'
-= simple_form_for [@question, @comment] do |f|
-  = render 'comments/form', f: f
+- if user_signed_in?
+  = simple_form_for [@question, @comment] do |f|
+    = render 'comments/form', f: f
