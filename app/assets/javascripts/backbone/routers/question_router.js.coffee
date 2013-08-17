@@ -15,4 +15,3 @@ class Rubyinsense.Routers.QuestionsRouter extends Backbone.Router
   new: -> 
     view = new Rubyinsense.Views.NewQuestion() 
     $('#new-question').html(view.render().el)  
-    

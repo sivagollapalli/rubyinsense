@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   respond_to :json
 
-  before_filter :authenticate_user!, except: [:index, :new]
+  #before_filter :authenticate_user!
 
   def new
     @question = Question.new
@@ -10,11 +10,8 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(params[:question])
     @question.user = current_user
-    if @question.save
-      redirect_to questions_path
-    else
-      render 'new'
-    end
+    @question.save
+    respond_with @question
   end
 
   def edit

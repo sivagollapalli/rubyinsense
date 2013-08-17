@@ -1,0 +1,11 @@
+<div class="pull-left">
+    <%= @model.get('question').get('statement') %>
+</div> 
+<% if @model.get('user_id') == @model.get('question').get('user_id'): %>
+    <div style='float:right;'>
+        <a href='#' class='btn btn-danger'>Remove</a>
+        <a href='#' class='btn btn-primary'>Edit</a>
+    </div>
+<% end %>
+<br/>
+<br/>

@@ -1,6 +1,6 @@
 <h3>New Question</h3>
 
-<form url='/api/questions' method="post">
+<form id='new_question'> 
   <div class = 'row'>
     <div class = 'span4'>
         <div class = 'span4 form-inputs'>
@@ -9,7 +9,7 @@
               <textarea class="text required" id="question_statement" name="question[statement]" required="required" rows="8">
               </textarea>
             </div>
-            <input class="btn btn-info" name="commit" type="submit" value="Add a Question">
+            <input class="btn btn-info" type="submit">
         <div>
     </div>
   </div>
