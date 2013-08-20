@@ -5,7 +5,7 @@
 .row
   .bs-example
     = render :partial => 'image', :locals => {:user => @question.user}
-    = @question.user.twitter_handle
+    = link_to @question.user.twitter_handle, @question.user.twitter_url, :target => '_blank'
   %pre.highlight.prettyprint
     %h4
       =@question.statement
@@ -20,7 +20,7 @@
     .row
       .bs-example
         = render :partial => 'image', :locals => {:user => ans.user}
-        = ans.user.twitter_handle 
+        = link_to ans.user.twitter_handle, ans.user.twitter_url, :target => '_blank' 
         .pull-right
           - if user_signed_in?
             - if current_user == ans.user
@@ -39,5 +39,6 @@
 %legend 
   %b Comments
 = render 'comment'
-= simple_form_for [@question, @comment] do |f|
-  = render 'comments/form', f: f
+- if user_signed_in?
+  = simple_form_for [@question, @comment] do |f|
+    = render 'comments/form', f: f

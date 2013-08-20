@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(params[:question])
     @question.user = current_user
     if @question.save
-      Twitter.update('@'+ current_user.twitter_handle + " added a question to #rubyinsense..!! Here it is #{@question.url_shortner('http://rubyinsense.heroku.com/questions/#{@question.id}')}") unless Rails.env.development?
+      Twitter.update('@'+ current_user.twitter_handle + " added a question to #rubyinsense..!! Here it is " + @question.url_shortner('http://rubyinsense.heroku.com/questions/'+@question.id)) unless Rails.env.development?
       redirect_to questions_path
     else
       render 'new'
