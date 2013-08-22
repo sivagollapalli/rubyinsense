@@ -5,7 +5,7 @@ class Question
   include Rubyinsense::EncodeUrl
 
   field :statement, type: String
-  field :answer_count
+  field :answer_count, type: Integer, default: 0
 
 
   belongs_to :user
