@@ -106,6 +106,7 @@ textarea.answer {
 }
 .black{
   background-color: black;  
+  text-decoration: blink;
 }
 
 .red{
@@ -113,6 +114,27 @@ textarea.answer {
 }
 
 .new{
+  font-size:12px;
+  font-style:italic;
   float:right;
   margin-right:12px;
 }
+
+@keyframes blink {  
+  0% { color: red; }
+  100% { color: black; }
+}
+
+@-webkit-keyframes blink {
+  0% { color: #428BCA; }
+  100% { color: white; }
+}
+
+.blink {
+  -webkit-animation: blink 1s linear infinite;
+  -moz-animation: blink 1s linear infinite;
+  -ms-animation: blink 1s linear infinite;
+  -o-animation: blink 1s linear infinite;
+  animation: blink 1s linear infinite;
+} 
+

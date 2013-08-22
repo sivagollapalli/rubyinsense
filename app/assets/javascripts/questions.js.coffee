@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $(document).ready -> 
+    $('.answer').tooltip();
+
     window.HideOrShow = (ele) ->
         icon = $("#a_"+ele).contents().attr('class')
         $("#q_"+ele).toggle ->
@@ -11,3 +13,4 @@ $(document).ready ->
             else
                $("#a_"+ele).contents().attr("class", 'icon-chevron-up');
                $("#a_"+ele).contents().attr("title", 'Hide');
+

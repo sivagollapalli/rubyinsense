@@ -15,16 +15,14 @@
   - @questions.each do |ques|
     .col-lg-4.main-box
       - if ques.answer_count > 0
-        %h3.answer
+        %h3.answer{title: "#{ques.answer_count} answer"}
           %span
             .glyphicon.glyphicon-bookmark.red
       .panel.panel-primary.box
         .panel-heading
           = render :partial => "questions/image", :locals => {:user => ques.user}
-          .new
-            - if is_new?(ques)
-              %h4
-                .label.label-default.black NEW
+          - if is_new?(ques)
+            %span.blink.new Recently Added
         = truncate(ques.statement, length: 180)
         .info
           .pull-right
