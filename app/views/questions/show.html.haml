@@ -1,14 +1,13 @@
 .row
-  .span2.pull-right
-    %h5= link_to 'Add Answer', new_question_answer_path(@question), class: 'btn btn-primary'
-
-.row
   .bs-example
     = render :partial => 'image', :locals => {:user => @question.user}
     = link_to @question.user.twitter_handle, @question.user.twitter_url, :target => '_blank'
   %pre.highlight.prettyprint
     %h4
       =@question.statement
+  .answer_box
+  .pull-right
+    %h5= link_to 'Add Answer', new_question_answer_path(@question), class: 'btn btn-primary'
 
 
 - answers = @question.answers
@@ -25,10 +24,12 @@
           - if user_signed_in?
             - if current_user == ans.user
               %span
-                = link_to 'Edit', edit_question_answer_path(@question, ans), title: 'Edit', class: 'btn btn-primary' 
+                = link_to edit_question_answer_path(@question, ans), title: 'Edit' do
+                  %span.glyphicon.glyphicon-edit
               &nbsp
               %span
-                = link_to 'Destroy', question_answer_path(@question, ans), method: :delete, title: 'Remove', class: 'btn btn-danger' 
+                = link_to question_answer_path(@question, ans), method: :delete, title: 'Remove', confirm: "Are you sure?" do
+                  %span.glyphicon.glyphicon-trash
               &nbsp
             - else
               %div{id: ans.id}
