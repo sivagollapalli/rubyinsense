@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.all.desc(:created_at)
   end
 
   def my_questions

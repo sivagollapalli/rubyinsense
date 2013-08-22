@@ -96,6 +96,9 @@ GEM
       moped (~> 1.4)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
+    mongoid_magic_counter_cache (1.0.0)
+      mongoid
+      rake
     mongoid_slug (3.1.1)
       mongoid (> 3.0)
       stringex (~> 1.4)
@@ -195,6 +198,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   mongoid (~> 3.1.2)
+  mongoid_magic_counter_cache
   mongoid_slug
   omniauth
   omniauth-twitter

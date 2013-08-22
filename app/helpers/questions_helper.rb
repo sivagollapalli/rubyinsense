@@ -10,4 +10,8 @@ module QuestionsHelper
     RedCloth.new(html).to_html
   end
 
+  def is_new?(question)
+    question.created_at.try(:to_date) == Date.today
+  end
+
 end

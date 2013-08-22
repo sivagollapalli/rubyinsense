@@ -8,6 +8,8 @@ gem 'simple_form'
 gem 'voteable_mongo', :git => 'https://github.com/dementrock/voteable_mongo.git'
 gem 'coderay'
 gem 'RedCloth'
+gem 'mongoid_magic_counter_cache'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

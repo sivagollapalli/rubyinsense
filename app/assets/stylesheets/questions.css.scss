@@ -83,7 +83,36 @@ textarea.answer {
   box-shadow: 0 8px 6px -6px black;
 }
 
-.box {
-  height: 225px;
+.main-box{
+  position: relative;
 }
 
+.answer{
+  position: absolute;
+  z-index: 1;
+  top: -20;
+  right:20;
+}
+
+.box {
+  height: 225px;
+  position: relative;
+}
+
+.info{
+  position: absolute;
+  bottom:2;
+  right:10;
+}
+.black{
+  background-color: black;  
+}
+
+.red{
+  color: #D9534F;
+}
+
+.new{
+  float:right;
+  margin-right:12px;
+}

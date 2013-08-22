@@ -1,9 +1,12 @@
 class Question
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Timestamps
   include Rubyinsense::EncodeUrl
 
   field :statement, type: String
+  field :answer_count
+
 
   belongs_to :user
   has_many :answers
