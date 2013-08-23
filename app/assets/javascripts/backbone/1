@@ -1,209 +1,339 @@
+diff --git a/app/assets/javascripts/application.js b/app/assets/javascripts/application.js
+index 7644724..3baec2a 100644
+--- a/app/assets/javascripts/application.js
++++ b/app/assets/javascripts/application.js
+@@ -13,7 +13,8 @@
+ //= require jquery
+ //= require jquery_ujs
+ //= require twitter/bootstrap
+-//= require underscore
++//= require underscore/underscore
++//= require underscore/underscore-min
+ //= require backbone
+ //= require backbone_rails_sync
+ //= require backbone_datalink
 diff --git a/app/assets/javascripts/backbone/1 b/app/assets/javascripts/backbone/1
-index f8667aa..e69de29 100644
+index 9d06873..e69de29 100644
 --- a/app/assets/javascripts/backbone/1
 +++ b/app/assets/javascripts/backbone/1
-@@ -1,145 +0,0 @@
--diff --git a/Gemfile b/Gemfile
--index 830495c..bef96f0 100644
----- a/Gemfile
--+++ b/Gemfile
--@@ -45,3 +45,4 @@ gem 'twitter-bootstrap-rails'
-- gem "therubyracer"
-- gem "less-rails"
-- gem "rails-backbone"
--+gem 'eco'
--diff --git a/Gemfile.lock b/Gemfile.lock
--index 0eb3db8..cd922f3 100644
----- a/Gemfile.lock
--+++ b/Gemfile.lock
--@@ -44,6 +44,11 @@ GEM
--       orm_adapter (~> 0.1)
--       railties (~> 3.1)
--       warden (~> 1.2.1)
--+    eco (1.0.0)
--+      coffee-script
--+      eco-source
--+      execjs
--+    eco-source (1.1.0.rc.1)
--     ejs (1.0.0)
--     erubis (2.7.0)
--     execjs (1.4.0)
--@@ -164,6 +169,7 @@ PLATFORMS
-- DEPENDENCIES
--   coffee-rails (~> 3.2.1)
--   devise
--+  eco
--   haml-rails
--   jquery-rails
--   less-rails
--diff --git a/app/assets/javascripts/backbone/rubyinsense.js.coffee b/app/assets/javascripts/backbone/rubyinsense.js.coffee
--index 18e8c56..ac132f9 100644
----- a/app/assets/javascripts/backbone/rubyinsense.js.coffee
--+++ b/app/assets/javascripts/backbone/rubyinsense.js.coffee
--@@ -8,4 +8,10 @@ window.Rubyinsense =
--   Models: {}
--   Collections: {}
--   Routers: {}
---  Views: {}
--\ No newline at end of file
--+  Views: {}
--+  init: -> 
--+    new Rubyinsense.Routers.QuestionsRouter()
--+    Backbone.history.start()
--+
--+$(document).ready -> 
--+  Rubyinsense.init()
+@@ -1,209 +0,0 @@
+-diff --git a/app/assets/javascripts/backbone/1 b/app/assets/javascripts/backbone/1
+-index f8667aa..e69de29 100644
+---- a/app/assets/javascripts/backbone/1
+-+++ b/app/assets/javascripts/backbone/1
+-@@ -1,145 +0,0 @@
+--diff --git a/Gemfile b/Gemfile
+--index 830495c..bef96f0 100644
+----- a/Gemfile
+--+++ b/Gemfile
+--@@ -45,3 +45,4 @@ gem 'twitter-bootstrap-rails'
+-- gem "therubyracer"
+-- gem "less-rails"
+-- gem "rails-backbone"
+--+gem 'eco'
+--diff --git a/Gemfile.lock b/Gemfile.lock
+--index 0eb3db8..cd922f3 100644
+----- a/Gemfile.lock
+--+++ b/Gemfile.lock
+--@@ -44,6 +44,11 @@ GEM
+--       orm_adapter (~> 0.1)
+--       railties (~> 3.1)
+--       warden (~> 1.2.1)
+--+    eco (1.0.0)
+--+      coffee-script
+--+      eco-source
+--+      execjs
+--+    eco-source (1.1.0.rc.1)
+--     ejs (1.0.0)
+--     erubis (2.7.0)
+--     execjs (1.4.0)
+--@@ -164,6 +169,7 @@ PLATFORMS
+-- DEPENDENCIES
+--   coffee-rails (~> 3.2.1)
+--   devise
+--+  eco
+--   haml-rails
+--   jquery-rails
+--   less-rails
+--diff --git a/app/assets/javascripts/backbone/rubyinsense.js.coffee b/app/assets/javascripts/backbone/rubyinsense.js.coffee
+--index 18e8c56..ac132f9 100644
+----- a/app/assets/javascripts/backbone/rubyinsense.js.coffee
+--+++ b/app/assets/javascripts/backbone/rubyinsense.js.coffee
+--@@ -8,4 +8,10 @@ window.Rubyinsense =
+--   Models: {}
+--   Collections: {}
+--   Routers: {}
+---  Views: {}
+--\ No newline at end of file
+--+  Views: {}
+--+  init: -> 
+--+    new Rubyinsense.Routers.QuestionsRouter()
+--+    Backbone.history.start()
+--+
+--+$(document).ready -> 
+--+  Rubyinsense.init()
+--diff --git a/app/controllers/home_controller.rb b/app/controllers/home_controller.rb
+--index 37d273d..e495a93 100644
+----- a/app/controllers/home_controller.rb
+--+++ b/app/controllers/home_controller.rb
+--@@ -1,6 +1,5 @@
+-- class HomeController < ApplicationController
+--   def index
+---    redirect_to questions_path if current_user
+--   end
+-- 
+--   def create
+--diff --git a/app/controllers/questions_controller.rb b/app/controllers/questions_controller.rb
+--index c953e2b..35295a5 100644
+----- a/app/controllers/questions_controller.rb
+--+++ b/app/controllers/questions_controller.rb
+--@@ -1,5 +1,7 @@
+-- class QuestionsController < ApplicationController
+---   before_filter :authenticate_user!
+--+  respond_to :json
+--+
+--+  before_filter :authenticate_user!, except: [:index]
+-- 
+--   def new
+--     @question = Question.new
+--@@ -29,7 +31,7 @@ class QuestionsController < ApplicationController
+--   end
+-- 
+--   def index
+---    @questions = Question.all
+--+    respond_with Question.all
+--   end
+-- 
+--   def my_questions
+--diff --git a/app/views/home/index.html.haml b/app/views/home/index.html.haml
+--index fcb4e8f..a7d1361 100644
+----- a/app/views/home/index.html.haml
+--+++ b/app/views/home/index.html.haml
+--@@ -1 +1 @@
+---%h4 Please SignIn to continue
+--+#questions
+--diff --git a/app/views/layouts/application.html.haml b/app/views/layouts/application.html.haml
+--index 00e54fe..e092b3b 100644
+----- a/app/views/layouts/application.html.haml
+--+++ b/app/views/layouts/application.html.haml
+--@@ -29,7 +29,7 @@
+--     = stylesheet_link_tag 'application'
+--     = javascript_include_tag 'application'
+--     = csrf_meta_tags
+---  %body.well
+--+  %body
+--     .navbar.navbar-inverse
+--       .navbar-inner
+--         - if user_signed_in?
+--diff --git a/config/routes.rb b/config/routes.rb
+--index 392f660..4a5a89c 100644
+----- a/config/routes.rb
+--+++ b/config/routes.rb
+--@@ -1,14 +1,15 @@
+-- Rubyinsense::Application.routes.draw do
+---  match '/home' => 'home#index'
+--   match '/auth/:provider/callback' => 'home#create'
+--   devise_for :users, :controllers => {:registrations => 'registrations'}
+-- 
+---  resources :questions do
+---    collection do
+---      get 'my_questions'
+--+  scope 'api' do
+--+    resources :questions do
+--+      collection do
+--+        get 'my_questions'
+--+      end
+--+      resources :answers
+--+      resources :comments, only: [:create, :destroy]
+--     end
+---    resources :answers
+---    resources :comments, only: [:create, :destroy]
+--   end
+---  root :to => 'questions#index'
+--+  root :to => 'home#index'
+-- end
+--diff --git a/db/seeds.rb b/db/seeds.rb
+--index 1e7a63c..87638d9 100644
+----- a/db/seeds.rb
+--+++ b/db/seeds.rb
+--@@ -1,9 +1 @@
+---# This file should contain all the record creation needed to seed the database with its default values.
+---# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+---#
+---# Examples:
+---#
+---#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+---#   Mayor.create(name: 'Emanuel', city: cities.first)
+---#
+---#
+--+10.times {|i| Question.create!(statement: "question#{i}") }
+-diff --git a/app/assets/javascripts/backbone/models/question.js.coffee b/app/assets/javascripts/backbone/models/question.js.coffee
+-index 40040f1..be75d49 100644
+---- a/app/assets/javascripts/backbone/models/question.js.coffee
+-+++ b/app/assets/javascripts/backbone/models/question.js.coffee
+-@@ -1,4 +1,6 @@
+- class Rubyinsense.Models.Question extends Backbone.Model
+-+   paramRoot: 'question'
+- 
+- class Rubyinsense.Collections.QuestionsCollection extends Backbone.Collection
+-+   model: Rubyinsense.Models.Question
+-    url: '/api/questions'
+-diff --git a/app/assets/javascripts/backbone/routers/question_router.js.coffee b/app/assets/javascripts/backbone/routers/question_router.js.coffee
+-index c0cf75f..2492585 100644
+---- a/app/assets/javascripts/backbone/routers/question_router.js.coffee
+-+++ b/app/assets/javascripts/backbone/routers/question_router.js.coffee
+-@@ -15,4 +15,3 @@ class Rubyinsense.Routers.QuestionsRouter extends Backbone.Router
+-   new: -> 
+-     view = new Rubyinsense.Views.NewQuestion() 
+-     $('#new-question').html(view.render().el)  
+--    
 -diff --git a/app/controllers/home_controller.rb b/app/controllers/home_controller.rb
--index 37d273d..e495a93 100644
+-index e495a93..714c072 100644
 ---- a/app/controllers/home_controller.rb
 -+++ b/app/controllers/home_controller.rb
--@@ -1,6 +1,5 @@
-- class HomeController < ApplicationController
--   def index
---    redirect_to questions_path if current_user
--   end
-- 
--   def create
+-@@ -8,6 +8,7 @@ class HomeController < ApplicationController
+-     if user
+-       flash[:notice] = "Signed in successfully."
+-       sign_in_and_redirect(:user, user)
+-+      cookies[:user_id] = user.id
+-     else
+-       session[:uid] = omniauth['uid']
+-       redirect_to new_user_registration_url
 -diff --git a/app/controllers/questions_controller.rb b/app/controllers/questions_controller.rb
--index c953e2b..35295a5 100644
+-index 29bc22e..733e846 100644
 ---- a/app/controllers/questions_controller.rb
 -+++ b/app/controllers/questions_controller.rb
--@@ -1,5 +1,7 @@
+-@@ -1,7 +1,7 @@
 - class QuestionsController < ApplicationController
---   before_filter :authenticate_user!
--+  respond_to :json
--+
--+  before_filter :authenticate_user!, except: [:index]
+-   respond_to :json
+- 
+--  before_filter :authenticate_user!, except: [:index, :new]
+-+  #before_filter :authenticate_user!
 - 
 -   def new
 -     @question = Question.new
--@@ -29,7 +31,7 @@ class QuestionsController < ApplicationController
+-@@ -10,11 +10,8 @@ class QuestionsController < ApplicationController
+-   def create
+-     @question = Question.new(params[:question])
+-     @question.user = current_user
+--    if @question.save
+--      redirect_to questions_path
+--    else
+--      render 'new'
+--    end
+-+    @question.save
+-+    respond_with @question
 -   end
 - 
--   def index
---    @questions = Question.all
--+    respond_with Question.all
--   end
-- 
--   def my_questions
--diff --git a/app/views/home/index.html.haml b/app/views/home/index.html.haml
--index fcb4e8f..a7d1361 100644
----- a/app/views/home/index.html.haml
--+++ b/app/views/home/index.html.haml
--@@ -1 +1 @@
---%h4 Please SignIn to continue
--+#questions
--diff --git a/app/views/layouts/application.html.haml b/app/views/layouts/application.html.haml
--index 00e54fe..e092b3b 100644
----- a/app/views/layouts/application.html.haml
--+++ b/app/views/layouts/application.html.haml
--@@ -29,7 +29,7 @@
--     = stylesheet_link_tag 'application'
--     = javascript_include_tag 'application'
--     = csrf_meta_tags
---  %body.well
--+  %body
--     .navbar.navbar-inverse
--       .navbar-inner
--         - if user_signed_in?
--diff --git a/config/routes.rb b/config/routes.rb
--index 392f660..4a5a89c 100644
----- a/config/routes.rb
--+++ b/config/routes.rb
--@@ -1,14 +1,15 @@
-- Rubyinsense::Application.routes.draw do
---  match '/home' => 'home#index'
--   match '/auth/:provider/callback' => 'home#create'
--   devise_for :users, :controllers => {:registrations => 'registrations'}
-- 
---  resources :questions do
---    collection do
---      get 'my_questions'
--+  scope 'api' do
--+    resources :questions do
--+      collection do
--+        get 'my_questions'
--+      end
--+      resources :answers
--+      resources :comments, only: [:create, :destroy]
--     end
---    resources :answers
---    resources :comments, only: [:create, :destroy]
--   end
---  root :to => 'questions#index'
--+  root :to => 'home#index'
-- end
--diff --git a/db/seeds.rb b/db/seeds.rb
--index 1e7a63c..87638d9 100644
----- a/db/seeds.rb
--+++ b/db/seeds.rb
--@@ -1,9 +1 @@
---# This file should contain all the record creation needed to seed the database with its default values.
---# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
---#
---# Examples:
---#
---#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
---#   Mayor.create(name: 'Emanuel', city: cities.first)
---#
---#
--+10.times {|i| Question.create!(statement: "question#{i}") }
-diff --git a/app/assets/javascripts/backbone/models/question.js.coffee b/app/assets/javascripts/backbone/models/question.js.coffee
-index 40040f1..be75d49 100644
---- a/app/assets/javascripts/backbone/models/question.js.coffee
-+++ b/app/assets/javascripts/backbone/models/question.js.coffee
-@@ -1,4 +1,6 @@
- class Rubyinsense.Models.Question extends Backbone.Model
-+   paramRoot: 'question'
- 
- class Rubyinsense.Collections.QuestionsCollection extends Backbone.Collection
-+   model: Rubyinsense.Models.Question
-    url: '/api/questions'
+-   def edit
 diff --git a/app/assets/javascripts/backbone/routers/question_router.js.coffee b/app/assets/javascripts/backbone/routers/question_router.js.coffee
-index c0cf75f..2492585 100644
+index 467ce3b..2d4c0cf 100644
 --- a/app/assets/javascripts/backbone/routers/question_router.js.coffee
 +++ b/app/assets/javascripts/backbone/routers/question_router.js.coffee
-@@ -15,4 +15,3 @@ class Rubyinsense.Routers.QuestionsRouter extends Backbone.Router
-   new: -> 
-     view = new Rubyinsense.Views.NewQuestion() 
-     $('#new-question').html(view.render().el)  
--    
-diff --git a/app/controllers/home_controller.rb b/app/controllers/home_controller.rb
-index e495a93..714c072 100644
---- a/app/controllers/home_controller.rb
-+++ b/app/controllers/home_controller.rb
-@@ -8,6 +8,7 @@ class HomeController < ApplicationController
-     if user
-       flash[:notice] = "Signed in successfully."
-       sign_in_and_redirect(:user, user)
-+      cookies[:user_id] = user.id
-     else
-       session[:uid] = omniauth['uid']
-       redirect_to new_user_registration_url
+@@ -3,15 +3,21 @@ class Rubyinsense.Routers.QuestionsRouter extends Backbone.Router
+   routes:
+     '': 'index'
+     'questions/new' : 'new'
++    'questions/:id/edit' : 'edit'
+   
+-  initialize: ->
+-    @collection = new Rubyinsense.Collections.QuestionsCollection()
+-    @collection.fetch()
+-
+   index: ->
+-    view = new Rubyinsense.Views.QuestionsIndex(collection: @collection)
++    collection = new Rubyinsense.Collections.QuestionsCollection()
++    collection.fetch()
++    view = new Rubyinsense.Views.QuestionsIndex(collection: collection)
+     $('#questions').html(view.render().el)
+ 
+   new: ->
+-    view = new Rubyinsense.Views.NewQuestion()
++    question = new Rubyinsense.Models.Question()
++    view = new Rubyinsense.Views.NewQuestion(question: question, action: 'new')
++    $('#questions').html(view.render().el)
++
++  edit: (id) ->
++    question = new Rubyinsense.Models.Question()
++    question.fetch url: "/api/questions/#{id}/edit", async: false # async: false option halts execution unless server completes execution
++    view = new Rubyinsense.Views.NewQuestion(question: question, action: 'edit')
+     $('#questions').html(view.render().el)
+diff --git a/app/assets/javascripts/backbone/templates/questions/index.jst.eco b/app/assets/javascripts/backbone/templates/questions/index.jst.eco
+index 90ccd36..e8d09c2 100644
+--- a/app/assets/javascripts/backbone/templates/questions/index.jst.eco
++++ b/app/assets/javascripts/backbone/templates/questions/index.jst.eco
+@@ -18,7 +18,7 @@
+         <div class='pull-right'>
+             <% if question.get('user_id') == user_id: %>
+                 <a href='#' class='btn btn-danger'>Remove</a>
+-                <a href='#' class='btn btn-primary'>Edit</a>
++                <a href="#/questions/<%= question.get('_id') %>/edit" class='btn btn-primary'>Edit</a>
+             <% end %>
+         </div>
+         <br/>
+diff --git a/app/assets/javascripts/backbone/templates/questions/new.jst.eco b/app/assets/javascripts/backbone/templates/questions/new.jst.eco
+index 45d9da1..96d6727 100644
+--- a/app/assets/javascripts/backbone/templates/questions/new.jst.eco
++++ b/app/assets/javascripts/backbone/templates/questions/new.jst.eco
+@@ -1,12 +1,20 @@
+-<h3>New Question</h3>
++<% if @action == 'new': %>
++    <% title = "New Question" %>
++    <% id   =  "new_question" %>
++<% else: %>
++    <% title = "Edit Question" %>
++    <% id   =  "edit_question" %>
++<% end %>
++<h3><%= title %></h3>
+ 
+-<form id='new_question'> 
++<form id=<%= id %>> 
+   <div class = 'row'>
+     <div class = 'span4'>
+         <div class = 'span4 form-inputs'>
+             <div class="input text required">
+               <label class="text required" for="question_statement"><abbr title="required">*</abbr>Statement</label>
+-              <textarea class="text required" id="question_statement" name="question[statement]" required="required" rows="8">
++              <textarea class="text required" id="question_statement" name="question[statement]" required="required" rows="8"> 
++                <%= @question.get('statement') %>
+               </textarea>
+             </div>
+             <input class="btn btn-info" type="submit">
+diff --git a/app/assets/javascripts/backbone/views/questions/new_question.js.coffee b/app/assets/javascripts/backbone/views/questions/new_question.js.coffee
+index c704681..c217346 100644
+--- a/app/assets/javascripts/backbone/views/questions/new_question.js.coffee
++++ b/app/assets/javascripts/backbone/views/questions/new_question.js.coffee
+@@ -5,8 +5,8 @@ class Rubyinsense.Views.NewQuestion extends Backbone.View
+    events: ->
+      'submit #new_question': 'addQuestion'
+ 
+-   render: -> 
+-     $(@el).html(@template())
++   render: ->
++     $(@el).html(@template(question: this.options.question, action: this.options.action))
+      this
+ 
+    addQuestion: (event) ->
 diff --git a/app/controllers/questions_controller.rb b/app/controllers/questions_controller.rb
-index 29bc22e..733e846 100644
+index 733e846..2a2b059 100644
 --- a/app/controllers/questions_controller.rb
 +++ b/app/controllers/questions_controller.rb
-@@ -1,7 +1,7 @@
- class QuestionsController < ApplicationController
-   respond_to :json
- 
--  before_filter :authenticate_user!, except: [:index, :new]
-+  #before_filter :authenticate_user!
- 
-   def new
-     @question = Question.new
-@@ -10,11 +10,8 @@ class QuestionsController < ApplicationController
-   def create
-     @question = Question.new(params[:question])
-     @question.user = current_user
--    if @question.save
--      redirect_to questions_path
--    else
--      render 'new'
--    end
-+    @question.save
-+    respond_with @question
+@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
    end
  
    def edit
+-    @question = Question.find params[:id]
++    respond_with Question.find params[:id]
+   end
+   
+   def update
+@@ -36,8 +36,7 @@ class QuestionsController < ApplicationController
+   end
+     
+   def show
+-    @question = Question.find(params[:id])
+-    @comment = @question.comments.build
++    respond_with Question.find(params[:id])
+   end
+ 
+   def destroy

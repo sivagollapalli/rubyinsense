@@ -3,15 +3,21 @@ class Rubyinsense.Routers.QuestionsRouter extends Backbone.Router
   routes:
     '': 'index'
     'questions/new' : 'new'
+    'questions/:id/edit' : 'edit'
   
-  initialize: ->
-    @collection = new Rubyinsense.Collections.QuestionsCollection()
-    @collection.fetch()
-
   index: ->
-    view = new Rubyinsense.Views.QuestionsIndex(collection: @collection)
+    collection = new Rubyinsense.Collections.QuestionsCollection()
+    collection.fetch()
+    view = new Rubyinsense.Views.QuestionsIndex(collection: collection)
     $('#questions').html(view.render().el)
 
   new: ->
-    view = new Rubyinsense.Views.NewQuestion()
+    question = new Rubyinsense.Models.Question()
+    view = new Rubyinsense.Views.NewQuestion(question: question, action: 'new')
+    $('#questions').html(view.render().el)
+
+  edit: (id) ->
+    question = new Rubyinsense.Models.Question()
+    question.fetch url: "/api/questions/#{id}/edit", async: false # async: false option halts execution unless server completes execution
+    view = new Rubyinsense.Views.NewQuestion(question: question, action: 'edit')
     $('#questions').html(view.render().el)

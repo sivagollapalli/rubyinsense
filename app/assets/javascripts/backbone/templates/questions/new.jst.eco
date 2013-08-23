@@ -1,12 +1,20 @@
-<h3>New Question</h3>
+<% if @action == 'new': %>
+    <% title = "New Question" %>
+    <% id   =  "new_question" %>
+<% else: %>
+    <% title = "Edit Question" %>
+    <% id   =  "edit_question" %>
+<% end %>
+<h3><%= title %></h3>
 
-<form id='new_question'> 
+<form id=<%= id %>> 
   <div class = 'row'>
     <div class = 'span4'>
         <div class = 'span4 form-inputs'>
             <div class="input text required">
               <label class="text required" for="question_statement"><abbr title="required">*</abbr>Statement</label>
-              <textarea class="text required" id="question_statement" name="question[statement]" required="required" rows="8">
+              <textarea class="text required" id="question_statement" name="question[statement]" required="required" rows="8"> 
+                <%= @question.get('statement') %>
               </textarea>
             </div>
             <input class="btn btn-info" type="submit">

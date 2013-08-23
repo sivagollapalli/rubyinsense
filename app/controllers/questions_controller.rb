@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = Question.find params[:id]
+    respond_with Question.find params[:id]
   end
   
   def update
@@ -36,8 +36,7 @@ class QuestionsController < ApplicationController
   end
     
   def show
-    @question = Question.find(params[:id])
-    @comment = @question.comments.build
+    respond_with Question.find(params[:id])
   end
 
   def destroy

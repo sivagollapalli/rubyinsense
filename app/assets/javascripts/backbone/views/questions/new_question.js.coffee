@@ -5,8 +5,8 @@ class Rubyinsense.Views.NewQuestion extends Backbone.View
    events: ->
      'submit #new_question': 'addQuestion'
 
-   render: -> 
-     $(@el).html(@template())
+   render: ->
+     $(@el).html(@template(question: this.options.question, action: this.options.action))
      this
 
    addQuestion: (event) ->
