@@ -23,8 +23,15 @@
           = render :partial => "questions/image", :locals => {:user => ques.user}
           - if is_new?(ques)
             %span.blink.new Recently Added
-        = truncate(ques.statement, length: 180)
+        .question-block
+          = truncate(ques.statement, length: 180)
         .info
           .pull-right
             = link_to 'Detail', path_to_view(ques), class: 'btn btn-info'
           %br
+        .details
+          .name-block
+            %p Name: #{ques.user.try(:twitter_handle)}
+          .count-block
+            %p Answers Count: #{ques.answer_count}
+          .rating-block

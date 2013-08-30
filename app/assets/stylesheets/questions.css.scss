@@ -138,3 +138,35 @@ textarea.answer {
   animation: blink 1s linear infinite;
 } 
 
+
+
+/* added for hover on questions box */
+
+.col-lg-4.main-box {
+  position: relative;
+}
+
+.col-lg-4.main-box .details{
+  opacity:0 ;
+  position: absolute;
+  top: 90px;
+  width: 90%;
+  height: 90px;
+  overflow: hidden;
+}
+
+.col-lg-4.main-box .question-block{
+  position: absolute;
+  top: 70;
+  height: 95px;
+  width: 90%;
+  overflow: hidden;
+}
+
+.col-lg-4.main-box:hover .details {
+  opacity:1 ;
+}
+
+.col-lg-4.main-box:hover .question-block {
+  opacity:0;
+}
