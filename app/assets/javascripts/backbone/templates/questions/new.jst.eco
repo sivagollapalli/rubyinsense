@@ -16,6 +16,7 @@
               <textarea class="text required" id="question_statement" name="question[statement]" required="required" rows="8"> 
                 <%= @question.get('statement') %>
               </textarea>
+              <input type='hidden' id="question" value=<%= @question.get('_id') %>/>
             </div>
             <input class="btn btn-info" type="submit">
             <a href='#' class='btn'>Cancel</a>

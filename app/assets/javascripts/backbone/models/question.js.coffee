@@ -3,4 +3,3 @@ class Rubyinsense.Models.Question extends Backbone.Model
 
 class Rubyinsense.Collections.QuestionsCollection extends Backbone.Collection
    model: Rubyinsense.Models.Question
-   url: '/api/questions'

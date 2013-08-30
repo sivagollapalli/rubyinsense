@@ -7,7 +7,7 @@ class Rubyinsense.Routers.QuestionsRouter extends Backbone.Router
   
   index: ->
     collection = new Rubyinsense.Collections.QuestionsCollection()
-    collection.fetch()
+    collection.fetch({url: '/api/questions'})
     view = new Rubyinsense.Views.QuestionsIndex(collection: collection)
     $('#questions').html(view.render().el)
 

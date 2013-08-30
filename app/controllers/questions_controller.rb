@@ -20,11 +20,7 @@ class QuestionsController < ApplicationController
   
   def update
     @question = Question.find params[:id]
-    if @question.update_attributes(params[:question])
-      redirect_to questions_path
-    else
-      render 'edit'
-    end
+    respond_with @question.update_attributes(params[:question])
   end
 
   def index
@@ -32,7 +28,7 @@ class QuestionsController < ApplicationController
   end
 
   def my_questions
-    @questions = current_user.questions
+    respond_with current_user.questions
   end
     
   def show
@@ -41,7 +37,6 @@ class QuestionsController < ApplicationController
 
   def destroy
     question = current_user.questions.find(params[:id])
-    question.destroy
-    redirect_to questions_path
+    respond_with question.destroy
   end
 end
