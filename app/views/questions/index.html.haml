@@ -14,24 +14,22 @@
 .row
   - @questions.each do |ques|
     .col-lg-4.main-box
-      - if ques.answer_count > 0
-        %h3.answer{title: "#{ques.answer_count} answer"}
-          %span
-            .glyphicon.glyphicon-bookmark.red
       .panel.panel-primary.box
         .panel-heading
           = render :partial => "questions/image", :locals => {:user => ques.user}
           - if is_new?(ques)
             %span.blink.new Recently Added
-        .question-block
-          = truncate(ques.statement, length: 180)
-        .info
-          .pull-right
-            = link_to 'Detail', path_to_view(ques), class: 'btn btn-info'
-          %br
-        .details
-          .name-block
-            %p Name: #{ques.user.try(:twitter_handle)}
-          .count-block
-            %p Answers Count: #{ques.answer_count}
-          .rating-block
+        .panel-body
+          .question-main-div
+            = truncate(ques.statement, length: 180)
+          = link_to path_to_view(ques) do
+            .details
+              %center
+                .row
+                  %br
+                .row
+                  .btn.btn-default= "Answers : #{ques.answer_count}"
+                .row
+                  %br
+                .row
+                  .rating-block
