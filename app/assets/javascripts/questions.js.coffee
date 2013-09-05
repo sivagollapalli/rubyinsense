@@ -17,6 +17,7 @@ $ ->
   #setting correct score is still be done
   $('.rating-block').raty
     score:0
+    readOnly: true
 
   
 
