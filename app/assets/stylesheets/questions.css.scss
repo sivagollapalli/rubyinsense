@@ -147,26 +147,23 @@ textarea.answer {
 }
 
 .col-lg-4.main-box .details{
-  opacity:0 ;
   position: absolute;
-  top: 90px;
-  width: 90%;
-  height: 90px;
-  overflow: hidden;
-}
-
-.col-lg-4.main-box .question-block{
-  position: absolute;
-  top: 70;
-  height: 95px;
-  width: 90%;
-  overflow: hidden;
+  opacity:0;
+  top: 60px;;
+  left: 0;
+  width: 100%;
+  height: 73%;
 }
 
 .col-lg-4.main-box:hover .details {
   opacity:1 ;
+  padding: 10px;
+  background: rgba(45, 45, 45, 0.7); 
 }
 
-.col-lg-4.main-box:hover .question-block {
-  opacity:0;
+.question-main-div{
+    position: absolute;
+    top: 60px;;
+    left: 0;
+    padding: 10px;
 }
