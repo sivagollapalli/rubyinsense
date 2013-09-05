@@ -26,6 +26,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'mongoid-rspec'
+  gem "factory_girl_rails", "~> 4.2.1"
+  gem "database_cleaner", "~> 0.9.1"
+  gem 'simplecov', :require => false
+end
+
+
 gem 'jquery-rails'
 gem 'haml-rails'
 
@@ -46,8 +55,7 @@ gem 'haml-rails'
 
 gem "mongoid", "~> 3.1.2"
 gem 'mongoid_slug'
-#gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem "less-rails"
 gem 'twitter'
-gem 'bitly'
+gem 'bitly' 
