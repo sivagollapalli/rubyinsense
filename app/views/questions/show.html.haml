@@ -1,9 +1,12 @@
 %br
 .row
   .bs-example
-    = render :partial => 'image', :locals => {:user => @question.user}
-    = link_to @question.user.twitter_handle, @question.user.twitter_url, :target => '_blank'
-    .rating-block
+    %span
+      = render :partial => 'image', :locals => {:user => @question.user}
+      = link_to @question.user.twitter_handle, @question.user.twitter_url, :target => '_blank'
+    - if user_signed_in?
+      %span
+        .rating-block.pull-right
   %pre.highlight.prettyprint
     %h4
       =@question.statement
@@ -45,3 +48,7 @@
 - if user_signed_in?
   = simple_form_for [@question, @comment] do |f|
     = render 'comments/form', f: f
+
+:javascript
+  var question = #{@question.to_json}
+  var current_user_question_rating = #{@question.user_mark(current_user) || 0}

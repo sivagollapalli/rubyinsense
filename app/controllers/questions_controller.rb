@@ -53,4 +53,9 @@ class QuestionsController < ApplicationController
     @model = model.find(params[:id])
     current_user.vote(@answer, params[:type].to_sym)
   end
+
+  def rating
+    @question = Question.where(id: params[:id]).first
+    @question.rate_and_save(params[:score], current_user)
+  end
 end

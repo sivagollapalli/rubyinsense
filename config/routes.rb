@@ -7,8 +7,8 @@ Rubyinsense::Application.routes.draw do
     collection do
       get 'my_questions'
       get 'vote'
-      post 'rate'
     end
+    post 'rating', on: :member
     resources :answers
     resources :comments, only: [:create, :destroy]
   end
