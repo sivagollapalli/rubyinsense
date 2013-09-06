@@ -1,23 +1,54 @@
-%section
-  %span.label.label-success By :- 
-  = @question.user.email
-  .span2.pull-right
+%br
+.row
+  .bs-example
+    %span
+      = render :partial => 'image', :locals => {:user => @question.user}
+      = link_to @question.user.twitter_handle, @question.user.twitter_url, :target => '_blank'
+    - if user_signed_in?
+      %span
+        .rating-block.pull-right
+  %pre.highlight.prettyprint
+    %h4
+      =@question.statement
+  .answer_box
+  .pull-right
     %h5= link_to 'Add Answer', new_question_answer_path(@question), class: 'btn btn-primary'
-%section
-  %pre.prettyprint
-    %h4= "Question: #{@question.statement}"
-%legend Answers
-- @question.answers.each do |ans|
-  .bs-docs-example
-    %span.label.label-success Answer by :- 
-    = ans.user.email 
-    .pull-right
-      = link_to 'Remove', question_answer_path(@question, ans), method: :delete, class: 'btn btn-danger' if current_user == ans.user
-      = link_to 'Edit', edit_question_answer_path(@question, ans), class: 'btn btn-primary' if current_user == ans.user
-  %pre.prettyprint
-    = ans.statement
 
-%legend Comments
+
+- answers = @question.answers
+
+- if answers.present? 
+  %legend 
+    %b Answers
+  - answers.each do |ans|
+    .row
+      .bs-example
+        = render :partial => 'image', :locals => {:user => ans.user}
+        = link_to ans.user.twitter_handle, ans.user.twitter_url, :target => '_blank' 
+        .pull-right
+          - if user_signed_in?
+            - if current_user == ans.user
+              %span
+                = link_to edit_question_answer_path(@question, ans), title: 'Edit' do
+                  %span.glyphicon.glyphicon-edit
+              &nbsp
+              %span
+                = link_to question_answer_path(@question, ans), method: :delete, title: 'Remove', confirm: "Are you sure?" do
+                  %span.glyphicon.glyphicon-trash
+              &nbsp
+            - else
+              %div{id: ans.id}
+                = render 'vote', answer: ans
+      %pre.highlight.prettyprint
+        = raw code_highlight(ans.statement)
+
+%legend 
+  %b Comments
 = render 'comment'
-= simple_form_for [@question, @comment] do |f|
-  = render 'comments/form', f: f
+- if user_signed_in?
+  = simple_form_for [@question, @comment] do |f|
+    = render 'comments/form', f: f
+
+:javascript
+  var question = #{@question.to_json}
+  var current_user_question_rating = #{@question.user_mark(current_user) || 0}

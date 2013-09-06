@@ -5,6 +5,12 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'simple_form'
+gem 'voteable_mongo', :git => 'https://github.com/dementrock/voteable_mongo.git'
+gem 'coderay'
+gem 'RedCloth'
+gem 'mongoid_magic_counter_cache'
+gem 'mongoid_rateable'
+gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -20,6 +26,15 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'mongoid-rspec'
+  gem "factory_girl_rails", "~> 4.2.1"
+  gem "database_cleaner", "~> 0.9.1"
+  gem 'simplecov', :require => false
+end
+
 
 gem 'jquery-rails'
 gem 'haml-rails'
@@ -41,8 +56,9 @@ gem 'haml-rails'
 
 gem "mongoid", "~> 3.1.2"
 gem 'mongoid_slug'
-gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem "less-rails"
 gem "backbone-on-rails"
 gem 'eco'
+gem 'twitter'
+gem 'bitly' 

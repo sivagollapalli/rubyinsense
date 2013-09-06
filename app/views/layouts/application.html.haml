@@ -1,42 +1,42 @@
 - content_for :signed_in_options do
-  %ul.nav.pull-right
-    %li
-      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-        Options
-        %b.caret
-      %ul.dropdown-menu
-        %li
-          %a{:href => root_path} Questions
-        %li
-          %a{:href => my_questions_questions_path} My Questions
-        %li
-          %a{:href => new_question_path} Add a Question
-        %li.divider
-        %li
-          = link_to 'Log Out', destroy_user_session_path, method: :delete
+  %li.pull-right
+    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+      = render :partial => "questions/image", :locals => {:user => current_user}
+      = current_user.try(:twitter_handle) || 'Options' 
+    %ul.dropdown-menu
+      %li
+        %a{:href => edit_user_registration_path} My Profile
+      %li
+        = link_to 'Log Out', destroy_user_session_path, method: :delete
   :javascript
     $('.dropdown-toggle').dropdown();
 
 - content_for :signed_out_options do
-  %ul.nav.pull-right
-    %li 
-      = link_to 'Sign In with Twitter', '/auth/twitter?x_auth_access_type=read'
-      
+  %li.pull-right
+    = link_to 'Sign In with Twitter', '/auth/twitter?x_auth_access_type=read'
+
+- content_for :pills do  
+  %ul.nav.nav-pills
+    %li.active
+      = link_to 'Home', root_path
+    %li.active
+      = link_to 'My Questions', my_questions_questions_path 
+    - if user_signed_in?
+      = yield :signed_in_options
+    - else
+      = yield :signed_out_options
 
 %html
   %head
-    %title RubyInSense
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    .navbar.navbar-inverse
-      .navbar-inner
-        - if user_signed_in?
-          = yield :signed_in_options
-        - else
-          = yield :signed_out_options
-        .pull-left
-          = link_to 'RubyInSense', root_path, class: :brand 
+    .header
+      .logo
+        RubyInsense
     .container
-      = yield
+      #container
+        = yield(:pills)
+        = flash[:notice]
+        = yield

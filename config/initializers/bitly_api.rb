@@ -1,0 +1,2 @@
+BITLY_API="R_19efb593b40e3e21b7f868daa7907a9a"
+BITLY_NAME="rubyinsense"

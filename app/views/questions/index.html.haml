@@ -1,7 +1,37 @@
+- content_for :box do
+  %br
+  %br
+  .row
+    .span3
+    .span6
+      = image_tag 'box.jpg', size: '600x400'
+    .span3
 .row
   .pull-right
     = link_to 'Add Question', new_question_path, class: 'btn btn-info'
-  %br
-  %br
-  .span12
-    = render :partial => "questions"
+%br
+.row
+.row
+  - @questions.each do |ques|
+    .col-lg-4.main-box
+      .panel.panel-primary.box
+        .panel-heading
+          = render :partial => "questions/image", :locals => {:user => ques.user}
+          - if is_new?(ques)
+            %span.blink.new Recently Added
+        .panel-body
+          .question-main-div
+            = truncate(ques.statement, length: 180)
+          = link_to path_to_view(ques) do
+            .details
+              %center
+                .row
+                  %br
+                .row
+                  .btn.btn-default= "Answers : #{ques.answer_count}"
+                .row
+                  %br
+                .row
+                  %div{id: "question-rating-#{ques._id}"}
+:javascript
+  var questions_score = #{@questions.collect{|q| [q._id, q.rating]}.to_json}
