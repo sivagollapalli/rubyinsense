@@ -4,6 +4,8 @@ class Question
   include Mongoid::Timestamps
   include Rubyinsense::EncodeUrl
 
+  rateable range: (0..5), raters: User
+
   field :statement, type: String
   field :answer_count, type: Integer, default: 0
 

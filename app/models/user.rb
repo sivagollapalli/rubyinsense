@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
   include Mongo::Voter
   
-  devise :database_authenticatable, :registerable, :validatable
+  devise :database_authenticatable, :registerable, :validatable, :lockable
   field :email,               :type => String, :default => ''
   field :encrypted_password,  :type => String, :default => ''
   field :provider,            :type => String, :default => 'Twitter'

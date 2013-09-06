@@ -32,4 +32,6 @@
                 .row
                   %br
                 .row
-                  .rating-block
+                  %div{id: "question-rating-#{ques._id}"}
+:javascript
+  var questions_score = #{@questions.collect{|q| [q._id, q.rate_weight]}.to_json}

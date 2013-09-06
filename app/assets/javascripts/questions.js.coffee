@@ -14,9 +14,16 @@ $ ->
       $("#a_"+ele).contents().attr("class", 'icon-chevron-up');
       $("#a_"+ele).contents().attr("title", 'Hide');
 
+  if typeof questions_score != 'undefined'
+    $(questions_score).each (index) ->
+        $('#question-rating-'+this[0]).raty({ readOnly: true, score: this[1] });
+    
+
+
   #setting correct score is still be done
-  $('.rating-block').raty
-    score:0
+  $(".rating-block").raty click: (score, evt) ->
+    alert "ID: " + $(this).attr("id") + "\nscore: " + score + "\nevent: " + evt
+
 
   
 

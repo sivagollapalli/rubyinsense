@@ -1,7 +1,9 @@
+%br
 .row
   .bs-example
     = render :partial => 'image', :locals => {:user => @question.user}
     = link_to @question.user.twitter_handle, @question.user.twitter_url, :target => '_blank'
+    .rating-block
   %pre.highlight.prettyprint
     %h4
       =@question.statement

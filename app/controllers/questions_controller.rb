@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all.desc(:created_at)
+    @questions = Question.highest_rated
   end
 
   def my_questions
@@ -49,7 +49,8 @@ class QuestionsController < ApplicationController
   end
 
   def vote
-    @answer = Answer.find(params[:id])
+    model = params[:id].constantize
+    @model = model.find(params[:id])
     current_user.vote(@answer, params[:type].to_sym)
   end
 end

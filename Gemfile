@@ -9,6 +9,7 @@ gem 'voteable_mongo', :git => 'https://github.com/dementrock/voteable_mongo.git'
 gem 'coderay'
 gem 'RedCloth'
 gem 'mongoid_magic_counter_cache'
+gem 'mongoid_rateable'
 
 
 # Bundle edge Rails instead:
