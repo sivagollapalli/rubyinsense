@@ -20,7 +20,6 @@ $ ->
     
 
 
-  #setting correct score is still be done
   $(".rating-block").raty 
     path: "/"
     score: current_user_question_rating
