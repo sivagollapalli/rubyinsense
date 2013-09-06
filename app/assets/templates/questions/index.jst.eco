@@ -9,15 +9,16 @@
     </div>
 <% end %>
 
+<% if user_id: %>
 <div class='span12'>
     <h3>List of Questions</h3>
+    <%= @questions.length %>
     <% for question in @questions.models: %>
         <div class='pull-left'>
             <%= question.get('statement')%>
         </div>
         <div class='pull-right'>
             <% if question.get('user_id') == user_id: %>
-                <a href='#' class='btn btn-danger'>Remove</a>
                 <a href="#/questions/<%= question.get('_id') %>/edit" class='btn btn-primary'>Edit</a>
             <% end %>
         </div>
@@ -25,3 +26,4 @@
         <br/>
     <% end %>
 </div>
+<% end %>

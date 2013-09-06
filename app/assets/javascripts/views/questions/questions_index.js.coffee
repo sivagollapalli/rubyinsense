@@ -1,10 +1,7 @@
 class Rubyinsense.Views.QuestionsIndex extends Backbone.View
    tagName: 'li'
    
-   template: JST["backbone/templates/questions/index"]
-
-   initialize: -> 
-     @collection.on('reset', @render, this)
+   template: JST['questions/index']
 
    render: ->
      $(@el).html(@template(questions: @collection))

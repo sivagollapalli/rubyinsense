@@ -13,10 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require underscore/underscore
-//= require underscore/underscore-min
+//= require underscore
 //= require backbone
-//= require backbone_rails_sync
-//= require backbone_datalink
-//= require backbone/rubyinsense
+//= require rubyinsense
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
 //= require_tree .

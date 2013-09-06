@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   respond_to :json
 
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   def new
     @question = Question.new

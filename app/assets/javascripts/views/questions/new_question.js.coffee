@@ -1,6 +1,5 @@
 class Rubyinsense.Views.NewQuestion extends Backbone.View
-   
-   template: JST["backbone/templates/questions/new"]
+   template: JST["questions/new"]
 
    events: ->
      'submit #new_question': 'create'
