@@ -25,6 +25,8 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'haml_coffee_assets'
+  gem 'execjs'
 end
 
 group :test do
@@ -59,6 +61,5 @@ gem 'mongoid_slug'
 gem "therubyracer"
 gem "less-rails"
 gem "backbone-on-rails"
-gem 'eco'
 gem 'twitter'
 gem 'bitly' 

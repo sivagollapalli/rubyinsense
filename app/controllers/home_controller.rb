@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
   def index
-<<<<<<< HEAD
-=======
     #redirect_to questions_path if current_user
->>>>>>> master
   end
 
   def create
