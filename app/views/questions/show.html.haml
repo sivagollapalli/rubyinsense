@@ -28,13 +28,9 @@
         .pull-right
           - if user_signed_in?
             - if current_user == ans.user
-              %span
-                = link_to edit_question_answer_path(@question, ans), title: 'Edit' do
-                  %span.glyphicon.glyphicon-edit
+              = link_to ' Edit', edit_question_answer_path(@question, ans), title: 'Edit', class: 'glyphicon glyphicon-edit'
               &nbsp
-              %span
-                = link_to question_answer_path(@question, ans), method: :delete, title: 'Remove', confirm: "Are you sure?" do
-                  %span.glyphicon.glyphicon-trash
+              = link_to ' Remove', question_answer_path(@question, ans), method: :delete, title: 'Remove', confirm: "Are you sure?", class: 'glyphicon glyphicon-trash'
               &nbsp
             - else
               %div{id: ans.id}

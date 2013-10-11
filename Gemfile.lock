@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/Nerian/bootstrap-wysihtml5-rails.git
+  revision: 069f7f1ab357f86416553a434c5acfac792f258b
+  specs:
+    bootstrap-wysihtml5-rails (0.3.1.22)
+      railties (>= 3.0)
+
+GIT
   remote: https://github.com/dementrock/voteable_mongo.git
   revision: 538e86856daa1c180ba80b7c6f2805e531ba420c
   specs:
@@ -65,12 +72,15 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     diff-lcs (1.2.4)
+<<<<<<< HEAD
     eco (1.0.0)
       coffee-script
       eco-source
       execjs
     eco-source (1.1.0.rc.1)
     ejs (1.1.1)
+=======
+>>>>>>> master
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -241,7 +251,7 @@ DEPENDENCIES
   RedCloth
   backbone-on-rails
   bitly
-  bootstrap-wysihtml5-rails
+  bootstrap-wysihtml5-rails!
   coderay
   coffee-rails (~> 3.2.1)
   database_cleaner (~> 0.9.1)
