@@ -1,9 +1,6 @@
-%h2 Edit Question
+%legend Edit Question
 
-= simple_form_for @question, :url => question_path, :type => 'post' do |f|
-  .row
-    .span4
-    .span4
-      .form-inputs
-        = render :partial => 'form', :locals => { :f => f }
-        = f.submit 'Edit Question', class: 'btn btn-info'
+= simple_form_for @question, url: questions_path, defaults: {input_html: { class: "form-control"}} do |f|
+  = render :partial => 'form', :locals => { :f => f }
+  %br
+  = f.submit 'Update', class: 'btn btn-info'
