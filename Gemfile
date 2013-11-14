@@ -10,7 +10,7 @@ gem 'coderay'
 gem 'RedCloth'
 gem 'mongoid_magic_counter_cache'
 gem 'mongoid_rateable'
-gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails',
+gem 'bootstrap-wysihtml5-rails', :require => 'bootstrap-wysihtml5-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
