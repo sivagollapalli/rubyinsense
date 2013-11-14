@@ -4,8 +4,8 @@ box: wercker/ruby
 # See the Rails section on the wercker devcenter:
 # http://devcenter.wercker.com/articles/languages/ruby/rails-heroku.html
 # You will want to define your database as follows: 
-# services:
-#   - wercker/postgresql
+services:
+  - wercker/mongodb
 # See more about services on our devcenter:
 # http://devcenter.wercker.com/articles/services/
 build:
